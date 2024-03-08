@@ -23,6 +23,6 @@ public class Produto {
 
     private String descricao;
 
-    private BigDecimal preco; .
+    private BigDecimal preco;
 
 }
