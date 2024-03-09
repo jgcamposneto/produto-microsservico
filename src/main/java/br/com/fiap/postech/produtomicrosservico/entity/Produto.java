@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@Table(name = "users")
-@Entity(name = "users")
+@Table(name = "produtos")
+@Entity(name = "produtos")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,6 +22,8 @@ public class Produto {
     private Long id;
 
     private String descricao;
+
+    private int quantidadeEstoque;
 
     private BigDecimal preco;
 
