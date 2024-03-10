@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProdutoService {
@@ -30,6 +31,18 @@ public class ProdutoService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
         }
+    }
+    
+    public Produto atualizarProduto(Long id, Produto produto) {
+    	Produto produtoExistente = produtoRepository.findById(id).orElse(null);
+    	if(produtoExistente != null) {
+    		produtoExistente.setDescricao(produto.getDescricao());
+    		produtoExistente.setPreco(produto.getPreco());
+    		produtoExistente.setQuantidadeEstoque(produto.getQuantidadeEstoque());
+    		return produtoRepository.save(produtoExistente);
+    	} else {
+    		throw new NoSuchElementException("Produto não encontrado!");
+    	}
     }
 
 }

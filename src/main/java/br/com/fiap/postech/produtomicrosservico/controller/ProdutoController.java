@@ -29,5 +29,10 @@ public class ProdutoController {
     public ResponseEntity<?> listarProduto(@PathVariable(name = "id") Long id) {
         return produtoService.listarProduto(id);
     }
+    
+    @PutMapping("/{id}")
+    public Produto atualizarProduto(@PathVariable(name = "id") Long id, @RequestBody Produto produto) {
+    	return produtoService.atualizarProduto(id, produto);
+    }
 
 }
