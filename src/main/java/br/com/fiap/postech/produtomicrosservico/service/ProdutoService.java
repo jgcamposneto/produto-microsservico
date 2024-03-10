@@ -44,5 +44,14 @@ public class ProdutoService {
     		throw new NoSuchElementException("Produto não encontrado!");
     	}
     }
+    
+    public void excluirProduto(Long id) {
+    	Produto produtoExistente = produtoRepository.findById(id).orElse(null);
+    	if(produtoExistente != null) {
+    		produtoRepository.delete(produtoExistente);
+    	} else {
+    		throw new NoSuchElementException("Produto não encontrado!");
+    	}
+    }
 
 }
